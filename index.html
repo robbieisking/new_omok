@@ -25,6 +25,7 @@
 
 <button onclick='view.remove_circ(0)'> remove! </button>
 <button onclick='view.remove_circ(1)'> remove all </button>
+<button onclick='view.recover()'>recover</button>
 
 
 <script>
@@ -36,7 +37,6 @@ var list_go = []
 var list_back = []
 var review = 0
 var dol_color = 'black'
-var selection = d3.select('svg').selectAll('circle')
 
 // screen -> svg 좌표로 mapping
 function cursorPoint(e){

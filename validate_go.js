@@ -23,42 +23,10 @@ validate.isThere = function (list_of_go,loc) {
         {return 1}
 }
 
-validate.isWin = function (list_of_go,loc) {
-    var check_vector = [ {x:-1,y:1},{x:-1,y:0},
-{x:-1,y:-1},
-{x:0,y:1},
-{x:0,y:-1},
-{x:1,y:1},
-{x:1,y:0},
-{x:1,y:-1}]
-    var current_color = dol_color == 'black' ? 'white' : 'black'
-
-    check_vector.forEach ( function(val) {
-    while (list_of_go 
-
-
-    })
-
-
-    
-    
-    
-    
-}                     
-
-
-
-
-
-
-
-
-
 
 
 
 this.validate = validate
-
 
 
 

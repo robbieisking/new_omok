@@ -36,9 +36,9 @@ view.remove_circ = function (all) {
 
 view.refresh = function() {
 
-//    var selection =  d3.select('svg').selectAll('circle').data(model.call_data('circ_data'))
+    var selection =  d3.select('svg').selectAll('circle').data(model.call_data('circ_data'))
 
-    selection.data(circ_data).enter().append('circle')
+    selection.enter().append('circle')
             .attr('cx',function(d){return d.cx})
             .attr('cy',function(d){return d.cy})
             .attr('r',function(d){return d.r})
