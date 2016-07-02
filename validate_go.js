@@ -14,17 +14,25 @@ var vector = [
         {x:-1 ,y:-1,c:1 }
     ]
 
-function isUniqueList (list)
-{
-    for (var i = 0; i < (list.length-1); i++)
-    {
-        if(list[i] == list[i+1])
-        {
-            return false
-        }
-    }
-    return true
-}
+Array.prototype.isUniqueList = function() {
+
+    for (var i = 0; i < this.length - 1; i++)
+    {   
+        for (var j = 0; j <this.length; j++)
+        {   
+            if ( i != j)
+            {   
+                if (this[i] == this[j])
+                {   
+                return false
+                }   
+            }   
+        }   
+
+    }   
+
+return true
+}//end
 
 
 validate.isThere = function (list_of_go,loc) {
@@ -48,10 +56,14 @@ validate.isThere = function (list_of_go,loc) {
                          }})
 
     if (isThere_index == list_of_go.length)
-        {return 0}
+        {
+            return 0
+        }
     else
-        {return 1}
-}
+        {
+            return 1
+        }
+} // end
 
 
 
@@ -88,14 +100,13 @@ for ( var i = 0; i< vector.length; i++ ) {
 
 //중간부터 시작했을 수도 있으니, 돌의 끝에서부터 다시 샘
     current_id_rev = current_id + going*win
-     
+    next_color = verify[current_id_rev -going*win_rev]['fill'] 
     while ( next_color == current_color)
     {
-        console.log('win_rev:'+win_rev)
         win_rev += 1
-        if ( !(verify[current_id_rev + going*win_rev]))
+        if ( !(verify[current_id_rev - going*win_rev]))
           {break;}
-        next_color = verify[current_id_rev + win_rev*going]['fill']
+        next_color = verify[current_id_rev - win_rev*going]['fill']
     }
     
     if (  win_rev >=5 )
@@ -105,7 +116,7 @@ for ( var i = 0; i< vector.length; i++ ) {
 
 return false
 
-}
+} //end
 
 validate.isThreeThree = function(verify,x,y) {
 
@@ -164,10 +175,9 @@ if (current_color)
 
     }
 
-    console.log('ist:'+isThreeThree_index) 
     if (isThreeThree_index >=2 && isThreeThree_index <4)
     {
-        if (isUniqueList(parallel_check)) // list가 unique하면 평행하지 않음 
+        if (parallel_check.isUniqueList()) // list가 unique하면 평행하지 않음 
         {   
             return true
         }
@@ -192,8 +202,7 @@ if (current_color)
 
 }
 
-} // function bracket
-
+} //end 
 
 validate.isThreeCheckable = function(verify,current_id,go) {
 
@@ -237,7 +246,7 @@ validate.isThreeCheckable = function(verify,current_id,go) {
     return sum;
 
     
-}
+}// end
 
 this.validate = validate
 
