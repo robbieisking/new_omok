@@ -1,5 +1,6 @@
 ( function() {
 
+var empty ;
 var model = {}
 
 var _this = this

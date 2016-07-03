@@ -12,7 +12,7 @@ var vector = [
         {x:-1 ,y:1 ,c:3},
         {x:-1 ,y:0 ,c:4},
         {x:-1 ,y:-1,c:1 }
-    ]
+]
 
 Array.prototype.isUniqueList = function() {
 
@@ -89,18 +89,23 @@ for ( var i = 0; i< vector.length; i++ ) {
 //다른 색의 돌이 나오거나 돌이 없을때까지 돌을 샘
     while ( next_color == current_color)
     {
-        console.log('win:'+win)
         win += 1
         if ( !(verify[current_id + going*win]))
           {break;}
         next_color = verify[current_id + win*going]['fill']
     }
-   
+  
+  console.log('win:'+ win) 
     if (win >= 5) {return true}
 
 //중간부터 시작했을 수도 있으니, 돌의 끝에서부터 다시 샘
-    current_id_rev = current_id + going*win
-    next_color = verify[current_id_rev -going*win_rev]['fill'] 
+    current_id_rev = current_id + going*(win-1)
+    try
+    {next_color = verify[current_id_rev -going*win_rev]['fill'] }
+    catch (err)
+    {
+        next_color = null
+    }
     while ( next_color == current_color)
     {
         win_rev += 1
@@ -108,7 +113,8 @@ for ( var i = 0; i< vector.length; i++ ) {
           {break;}
         next_color = verify[current_id_rev - win_rev*going]['fill']
     }
-    
+   
+   console.log('win_rev:'+win_rev) 
     if (  win_rev >=5 )
         {return true}
 
